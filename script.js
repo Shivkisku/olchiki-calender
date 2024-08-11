@@ -7,7 +7,7 @@ let date = new Date(),
   currYear = date.getFullYear(),
   currMonth = date.getMonth();
 
-// Storing full name of all months in Hindi
+// Storing full name of all months in Olchiki
 const months = [
   "ᱢᱟᱜᱽ",
   "ᱯᱷᱟᱹᱜᱩᱱ",
@@ -23,10 +23,10 @@ const months = [
   "ᱯᱩᱥ"
 ];
 
-// Function to convert regular numbers to Hindi numerals
-const toHindiNumeral = (num) => {
-  const hindiNumbers = ["᱐", "᱑", "᱒", "᱓", "᱔", "᱕", "᱖", "᱗", "᱘", "᱙"];
-  return num.toString().split("").map(digit => hindiNumbers[parseInt(digit)]).join("");
+// Function to convert regular numbers to Olchiki numerals
+const toOlchikiNumeral = (num) => {
+  const olchikiNumbers = ["᱐", "᱑", "᱒", "᱓", "᱔", "᱕", "᱖", "᱗", "᱘", "᱙"];
+  return num.toString().split("").map(digit => olchikiNumbers[parseInt(digit)]).join("");
 };
 
 const renderCalendar = () => {
@@ -38,7 +38,7 @@ const renderCalendar = () => {
 
   for (let i = firstDayofMonth; i > 0; i--) {
     // creating li of previous month last days
-    liTag += `<li class="inactive">${toHindiNumeral(lastDateofLastMonth - i + 1)}</li>`;
+    liTag += `<li class="inactive">${toOlchikiNumeral(lastDateofLastMonth - i + 1)}</li>`;
   }
 
   for (let i = 1; i <= lastDateofMonth; i++) {
@@ -49,14 +49,14 @@ const renderCalendar = () => {
       currYear === new Date().getFullYear()
         ? "active"
         : "";
-    liTag += `<li class="${isToday}">${toHindiNumeral(i)}</li>`;
+    liTag += `<li class="${isToday}">${toOlchikiNumeral(i)}</li>`;
   }
 
   for (let i = lastDayofMonth; i < 6; i++) {
     // creating li of next month first days
-    liTag += `<li class="inactive">${toHindiNumeral(i - lastDayofMonth + 1)}</li>`;
+    liTag += `<li class="inactive">${toOlchikiNumeral(i - lastDayofMonth + 1)}</li>`;
   }
-  currentDate.innerText = `${months[currMonth]} ${toHindiNumeral(currYear)}`; // passing current mon and yr as currentDate text
+  currentDate.innerText = `${months[currMonth]} ${toOlchikiNumeral(currYear)}`; // passing current mon and yr as currentDate text
   daysTag.innerHTML = liTag;
 };
 renderCalendar();
